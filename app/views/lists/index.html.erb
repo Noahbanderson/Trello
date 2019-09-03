@@ -1,0 +1,23 @@
+<h1 class="ui header">Lists for <%= @board.board_title %></h1>
+<hr/>
+
+<% @lists.each do |list| %>
+  <div class="ui card">
+    <div class="content">
+      <p class="header">
+        <%= list.list_title %>
+      </p>
+      <div class="meta">
+        <span class="date"><%= list.l_o_number.to_s %></span>
+      </div>
+    </div>
+    <div class="extra content">
+      <%= link_to "Tasks", list_tasks_path(list) %>
+      <%= link_to 'Edit', edit_list_path(list) %> 
+      <%= link_to "Remove", list_path(list), method: :delete %>
+    </div>
+  </div>
+<% end %>
+<br />
+
+<%= link_to "New List", new_board_list_path(@board), class: "ui green button small" %>

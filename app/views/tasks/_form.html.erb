@@ -1,0 +1,22 @@
+<h1><%= @task.id ? "Edit Task" : "New Task" %></h1>
+<%= form_with(model: [@list, @task], local: true, class: "ui form") do |f| %>
+  <div class="field">
+    <%= f.label :task_name %>
+    <%= f.text_field :task_name, placeholder: "Task Name", autofocus: true, require: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Priority (1 is high, 10 is low)" %>
+    <%= f.select :t_o_number, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], require: true %>
+  </div>
+   <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: "Put Task Description Here", require: true %>
+  </div>
+
+
+  <%= f.submit class: "ui green button small" %>
+<% end %>
+<hr/>
+
+<%= link_to 'Return to lists', list_tasks_path(@list), class: "ui red button small" %>

@@ -1,0 +1,17 @@
+<h1><%= @board.id ? "Edit Board Title" : "New Board" %></h1>
+<%= form_with(model: @board, local: true, class: "ui form") do |f| %>
+  <div class="field">
+    <%= f.label :board_title %>
+    <%= f.text_field :board_title, placeholder: "Board Name", autofocus: true, require: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Priority (1 is high, 10 is low)" %>
+    <%= f.select :b_o_number, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], require: true %>
+  </div>
+
+  <%= f.submit class: "ui green button small" %>
+<% end %>
+<hr/>
+
+<%= link_to 'Return to Boards', boards_path, class: "ui red button small" %>

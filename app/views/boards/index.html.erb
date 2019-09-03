@@ -1,0 +1,23 @@
+<h1 class="ui header">Welcome to your Trollo Boards, <%= current_user.first_name %></h1>
+<hr/>
+
+<% @boards.each do |board| %>
+  <div class="ui card">
+    <div class="content">
+      <p class="header">
+        <%= board.board_title %>
+      </p>
+      <div class="meta">
+        <span class="date"><%= board.b_o_number.to_s %></span>
+      </div>
+    </div>
+    <div class="extra content">
+      <%= link_to "Lists", board_lists_path(board) %>
+      <%= link_to 'Edit', edit_board_path(board) %> 
+      <%= link_to "Remove", board_path(board), method: :delete %>
+    </div>
+  </div>
+<% end %>
+<br />
+
+<%= link_to "New Board", new_board_path, class: "ui green button small" %>
